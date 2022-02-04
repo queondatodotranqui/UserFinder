@@ -1,30 +1,9 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import {useState, useEffect} from 'react';
 
+import { UserData, Props } from '../models/userModel';
+
 const url = 'https://randomuser.me/api/?inc=gender,name,picture,email'
-
-type Props = {
-    
-};
-
-type UserName = {
-    first:string,
-    last:string,
-    title:string
-}
-
-type UserPicture = {
-    large:string,
-    medium:string,
-    thumbnail:string
-}
-
-type UserData = {
-    gender:string,
-    name:UserName,
-    picture:UserPicture,
-    email:string
-}
 
 const initialValue:UserData = {
     gender:'',
