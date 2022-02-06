@@ -17,13 +17,23 @@ type UserData = {
     email:string
 }
 
-type Props = {};
+type PropsGenderFilter = {
+    handleGender:Function
+};
 
+type FetchingData = {
+    url:string
+}
 
+type Props = {
+
+}
 
 export type{
     UserData,
     UserName,
     UserPicture,
-    Props
+    Props,
+    PropsGenderFilter,
+    FetchingData
 }

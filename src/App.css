@@ -13,15 +13,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .box{
     height: 40vh;
-    width: 40vw;
+    width: 30vw;
     padding: 5vh;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.user{
+    display: flex;
+}
+
+.user img{
+    height: auto;
+    width: auto;
+    margin-right: 3vh;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+@media all and (min-width:300px) and (max-width:1200px) {
+
+    .box{
+        width: 65vw;
+    }
 }
