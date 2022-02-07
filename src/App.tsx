@@ -1,10 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-function App() {
+import Main from './components/Main/Main';
+import { ChakraProvider, theme } from '@chakra-ui/react';
+
+const App: React.FC = () =>{
   return (
-    <div>
-      <h1>Hello fellas</h1>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Main />
+    </ChakraProvider>
   );
 }
 
