@@ -9,6 +9,7 @@ import { Box, Container, ScaleFade, Text, useDisclosure } from '@chakra-ui/react
 const Main = () => {
 
     const [url, setUrl] = useState(baseURL)
+    const [search, setSearch] = useState<boolean>(false)
     const {isOpen, onToggle} = useDisclosure()
 
     const handleGender = (option:string) =>{
@@ -24,10 +25,10 @@ const Main = () => {
                 </Text>
             </Box>
             <Container height='auto'>
-                <UserFilter handleGender={handleGender} onToggle={onToggle}/>
+                <UserFilter handleGender={handleGender} onToggle={onToggle} setSearch={setSearch}/>
                 <ScaleFade initialScale={0.9} in={isOpen}>
                     <Box padding="0 5vh" maxHeight='70vh' overflow='auto'>
-                        <DataFetching url={url}/>
+                        <DataFetching url={url} search={search} setSearch={setSearch}/>
                     </Box>
                 </ScaleFade>
             </Container>

@@ -18,17 +18,18 @@ type UserData = {
 }
 
 type PropsGenderFilter = {
-    handleGender:Function
-    onToggle:Function
+    handleGender:Function,
+    onToggle:Function,
+    setSearch:Function
 };
 
 type FetchingData = {
-    url:string
-}
+    url:string,
+    search:boolean,
+    setSearch:Function
+}   
 
-type Props = {
-
-}
+type Props = {}
 
 export type{
     UserData,
