@@ -1,24 +1,13 @@
-import React, { useState } from 'react'
-import UserFilter from './components/UserFilter';
-import { DataFetching } from './api/DataFetching';
-import { baseURL, buildURL } from './services/userService';
+import React from 'react'
 
+import Main from './components/Main/Main';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 
 const App: React.FC = () =>{
-
-  const [url, setUrl] = useState(baseURL)
-
-  const handleGender = (option:string) =>{
-    setUrl(buildURL(option))
-  }
-
   return (
-    <div className='container'>
-      <UserFilter handleGender={handleGender}/>
-      <div className='box'>
-        <DataFetching url={url}/>
-      </div>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Main />
+    </ChakraProvider>
   );
 }
 

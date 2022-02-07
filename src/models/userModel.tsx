@@ -19,6 +19,7 @@ type UserData = {
 
 type PropsGenderFilter = {
     handleGender:Function
+    onToggle:Function
 };
 
 type FetchingData = {

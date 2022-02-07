@@ -1,34 +1,19 @@
+import { Box, Image, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 
 import { UserData, FetchingData} from '../models/userModel';
 
-
-const initialValue:UserData = {
-    gender:'',
-    name:{
-        first:'',
-        last:'',
-        title:''
-    },
-    picture:{
-        large:'',
-        medium:'',
-        thumbnail:''
-    },
-    email:''
-}
-
 export const DataFetching = (props: FetchingData) => {
 
-    const [user, setUser] = useState<UserData>()
+    const [users, setUsers] = useState<UserData[]>([])
     const [error, setError] = useState<any>(false)
 
     useEffect(()=>{
         const fetchData = async () =>{
             try{
                 const data = await axios.get(`${props.url}`)
-                setUser(data.data.results[0])
+                setUsers(data.data.results)
             }
             catch(error){
                 console.log(error)
@@ -36,22 +21,23 @@ export const DataFetching = (props: FetchingData) => {
             }
         }
         fetchData()
-        return (()=>{
-            setUser(initialValue)
-        })
     }, [props.url])
 
     return (
         <div>
             {
-                user && !error ? (
-                    <div className='user'>
-                        <img src={user.picture.thumbnail} alt="user pfp"/>
-                        <div className='userInfo'>
-                            <h3>{user?.name.first} {user?.name.last}</h3>
-                            <p>{user?.email}</p>
-                        </div>
-                    </div>
+                users && !error ? (
+                    users.map((user, index)=>{
+                        return(
+                            <Box key={index} display='flex' padding='3vh' border='1px solid grey'>
+                                <Image objectFit='contain' borderRadius='full' src={user.picture.medium} alt="user pfp"/>
+                                <Box display='flex' padding='2vh' flexDirection='column' overflow='auto'>
+                                    <Text fontSize={{base:'medium', sm:'small', md:'large'}}>{user?.name.first} {user?.name.last}</Text>
+                                    <Text fontSize={{base:'medium', sm:'small'}}>{user?.email}</Text>
+                                </Box>
+                            </Box>
+                        )
+                    })
                 ) : 'No data yet!'
             }
         </div>
